@@ -60,10 +60,12 @@ public class FloorPaint extends JavaPlugin implements Listener, CommandExecutor 
         if(!blockList.containsKey(block) &&
                 block.getType() != Material.SMOOTH_STONE_SLAB &&
                 block.getType() != Material.SMOOTH_STONE &&
+                block.getType() != Material.STONE_BRICKS &&
+                block.getType() != Material.GLASS &&
                 !blockAbove.getType().toString().endsWith("_CARPET") &&
                 !block.getType().toString().endsWith("_WOOL") &&
-                block.getType() != Material.SMOOTH_QUARTZ &&
-                block.getType() != Material.QUARTZ_BLOCK &&
+                //block.getType() != Material.SMOOTH_QUARTZ &&
+                //block.getType() != Material.QUARTZ_BLOCK &&
                 block.getType() != Material.OAK_PLANKS)
             return;
 
@@ -95,17 +97,18 @@ public class FloorPaint extends JavaPlugin implements Listener, CommandExecutor 
             data.curColor = BaseColors.lightEquiv(baseColorCode);
             block.setType(Material.valueOf(data.curColor.toString() + data.matSuffix));
         }
-        else if(block.getType() == Material.SMOOTH_QUARTZ ||
-                block.getType() == Material.QUARTZ_BLOCK ||
-                block.getType().toString().endsWith("_GLAZED_TERRACOTTA")) {
-            data = updateAnimationEntry(block, animStepLength);
-            data.darker = false;
-            data.matSuffix = "_GLAZED_TERRACOTTA";
-            data.curColor = BaseColors.darkEquiv(baseColorCode);
-            block.setType(Material.valueOf(data.curColor.toString() + data.matSuffix));
-        }
+//        else if(block.getType() == Material.SMOOTH_QUARTZ ||
+//                block.getType() == Material.QUARTZ_BLOCK ||
+//                block.getType().toString().endsWith("_GLAZED_TERRACOTTA")) {
+//            data = updateAnimationEntry(block, animStepLength);
+//            data.darker = false;
+//            data.matSuffix = "_GLAZED_TERRACOTTA";
+//            data.curColor = BaseColors.darkEquiv(baseColorCode);
+//            block.setType(Material.valueOf(data.curColor.toString() + data.matSuffix));
+//        }
         else if(block.getType() == Material.OAK_PLANKS ||
-                block.getType().toString().endsWith("_STAINED_GLASS")) {
+                block.getType().toString().endsWith("_STAINED_GLASS") ||
+                block.getType() == Material.GLASS) {
             data = updateAnimationEntry(block, animStepLength);
             data.darker = true;
             data.matSuffix = "_STAINED_GLASS";
