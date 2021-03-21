@@ -4,6 +4,7 @@ main: com.popupmc.floorpaint.FloorPaint
 description: Floor Paint
 author: junebug12851
 api-version: 1.15
+depend: [Multiverse-Core]
 
 commands:
   paint-color:
